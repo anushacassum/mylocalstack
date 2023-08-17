@@ -1,0 +1,59 @@
+openapi: "3.0.0"
+info:
+  title: LocalStack Tech Talk
+  version: 0.0.2
+  contact:
+    email: support@bboxx.co.uk
+  description:  |
+    #  By Anusha Cassum
+    
+tags:
+  - name: Message
+
+servers:
+  - url: ''
+    description: Local server
+
+paths:
+  /send:
+    post:
+      tags: 
+       - Message
+      summary: Send a message
+      description: This endpoint allows user to send a message
+      operationId: sendMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example: Hello I'm sending a message
+      responses:
+        '201':
+          description: Message sent successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  response:
+                    type: string
+                    example: message sent successfully.
+                    
+  /receive:
+    get:
+      tags: 
+       - Message
+      summary: Receives a message
+      description: This endpoint allows user to receive a message
+      operationId: getMessage
+      responses:
+        '201':
+          description: Create success
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    example: Hello, please note XYZ
